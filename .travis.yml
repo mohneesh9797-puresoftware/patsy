@@ -28,9 +28,9 @@ matrix:
     # libfortran=1.0 is needed to work around a bug in anaconda
     # (https://github.com/pydata/patsy/pull/83#issuecomment-206895923)
     - arch: arm64
-      dist: xenial
+      dist: bionic
       env:
-      - PYTHON_VERSION=3.7
+      - PYTHON_VERSION=3.6
       before_install:
       - wget -q "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh
       - chmod +x archiconda.sh
