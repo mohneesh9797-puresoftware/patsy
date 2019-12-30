@@ -48,6 +48,7 @@ matrix:
       install: 
       - python --version
       - python setup.py sdist
+      - sudo rm /usr/bin/lsb_release
       - pip install dist/*
     
 # This disables sudo, but makes builds start much faster
