@@ -45,6 +45,7 @@ matrix:
       - if [ "$PANDAS_VERSION_STR" != "NONE" ]; then export PKGS="${PKGS} pandas${PANDAS_VERSION_STR}"; fi
       - sudo conda create -q -n testenv python=3.7 ${PKGS}
       - source activate testenv
+      - sudo cp -r $HOME/miniconda/bin/* /usr/bin/
       install: 
       - python --version
       - python setup.py sdist
