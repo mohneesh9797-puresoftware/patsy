@@ -46,6 +46,10 @@ matrix:
       - sudo conda create -q -n testenv python=3.7 ${PKGS}
       - source activate testenv
       - sudo cp -r $HOME/miniconda/bin/* /usr/bin/
+      - cat > $HOME/.pydistutils.cfg <<EOF
+        [install]
+        user=1
+        EOF
       install: 
       - python --version
       - python setup.py sdist
