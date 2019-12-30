@@ -47,9 +47,9 @@ matrix:
       - source activate testenv
       - sudo cp -r $HOME/miniconda/bin/* /usr/bin/
       - cat > $HOME/.pydistutils.cfg <<EOF
-        [install]
-        user=1
-        EOF
+      - cat > $HOME/.pydistutils.cfg <<[install]
+      - cat > $HOME/.pydistutils.cfg <<user=1
+      - cat > $HOME/.pydistutils.cfg <<EOF
       install: 
       - python --version
       - python setup.py sdist
