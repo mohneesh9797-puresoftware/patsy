@@ -51,10 +51,11 @@ matrix:
       - cat > $HOME/.pydistutils.cfg <<user=1
       - cat > $HOME/.pydistutils.cfg <<EOF
       install: 
+      - sudo chmod -R 777 /home/travis/miniconda/envs/testenv/lib/python3.7/site-packages/
       - python --version
       - python setup.py sdist
       - sudo rm /usr/bin/lsb_release
-      - pip install dist/*
+      - sudo pip install dist/*
     
 # This disables sudo, but makes builds start much faster
 # See http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/
