@@ -129,8 +129,8 @@ before_install:
            if [ "$PANDAS_VERSION_STR" != "NONE" ]; then export PKGS="${PKGS} pandas${PANDAS_VERSION_STR}"; fi;
            sudo conda create -q -n testenv python=3.7 ${PKGS};
            source activate testenv;
-           sudo cp -r $HOME/miniconda/bin/* /usr/bin/'
-           cat > $HOME/.pydistutils.cfg <<EOF'
+           sudo cp -r $HOME/miniconda/bin/* /usr/bin/';
+           cat > $HOME/.pydistutils.cfg <<EOF';
            cat > $HOME/.pydistutils.cfg <<[install];
            cat > $HOME/.pydistutils.cfg <<user=1;
            cat > $HOME/.pydistutils.cfg <<EOF;
