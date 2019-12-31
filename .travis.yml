@@ -146,7 +146,7 @@ before_install:
            if [ "$PANDAS_VERSION_STR" != "NONE" ]; then export PKGS="${PKGS} pandas${PANDAS_VERSION_STR}"; fi;
            conda create -q -n testenv python=$PYTHON_VERSION ${PKGS};
            source activate testenv;
-
+        fi  
 sudo: false
 install:
   -if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
