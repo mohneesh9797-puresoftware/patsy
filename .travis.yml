@@ -131,7 +131,7 @@ before_install:
            bash miniconda.sh -b -p $HOME/miniconda;  
         fi  
       - export PATH="$HOME/miniconda/bin:$PATH"
-      - hash -R
+      - hash -r
       - $ISSUDO conda config --set always_yes yes --set changeps1 no
       - $ISSUDO conda update -q conda
       - $ISSUDO conda info -a
