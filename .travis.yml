@@ -45,6 +45,36 @@ matrix:
     - arch: arm64
       dist: bionic
       env:
+      - PYTHON_VERSION=2.7
+      before_install:
+      - wget -q "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh
+      - chmod +x archiconda.sh
+      - bash archiconda.sh -b -p $HOME/miniconda
+      - export PATH="$HOME/miniconda/bin:$PATH"
+      - sudo cp -r $HOME/miniconda/bin/* /usr/bin/
+      - hash -r
+      - sudo conda config --set always_yes yes --set changeps1 no
+      - sudo conda update -q conda
+      - sudo conda info -a
+      - export PKGS="numpy scipy coverage nose pip"
+      - if [ "$PANDAS_VERSION_STR" != "NONE" ]; then export PKGS="${PKGS} pandas${PANDAS_VERSION_STR}"; fi
+      - sudo conda create -q -n testenv python=3.7 ${PKGS}
+      - source activate testenv
+      - sudo cp -r $HOME/miniconda/bin/* /usr/bin/
+      - cat > $HOME/.pydistutils.cfg <<EOF
+      - cat > $HOME/.pydistutils.cfg <<[install]
+      - cat > $HOME/.pydistutils.cfg <<user=1
+      - cat > $HOME/.pydistutils.cfg <<EOF
+      install: 
+      - sudo chmod -R 777 /home/travis/miniconda/envs/testenv/lib/python3.7/site-packages/
+      - python --version
+      - python setup.py sdist
+      - sudo rm /usr/bin/lsb_release
+      - pip install --user dist/*
+    
+    - arch: arm64
+      dist: bionic
+      env:
       - PYTHON_VERSION=3.4
       before_install:
       - wget -q "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh
