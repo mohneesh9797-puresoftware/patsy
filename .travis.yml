@@ -149,10 +149,10 @@ before_install:
         fi  
 sudo: false
 install:
-  -if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
+  - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
      sudo chmod -R 777 /home/travis/miniconda/envs/testenv/lib/python3.7/site-packages/;
      sudo rm /usr/bin/lsb_release;
-   fi
+    fi
   - python --version
   - python setup.py sdist
   - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
