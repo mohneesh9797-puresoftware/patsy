@@ -159,6 +159,7 @@ install:
      pip install --user dist/*;
     else
      pip install dist/*
+    fi 
  
 script:
   # We change directories to make sure that python won't find the copy
