@@ -134,14 +134,16 @@ before_install:
       - $ISSUDO conda info -a
       - export PKGS="numpy scipy coverage nose pip"
       - if [ "$PANDAS_VERSION_STR" != "NONE" ]; then export PKGS="${PKGS} pandas${PANDAS_VERSION_STR}"; fi
-      - $ISSUDO conda create -q -n testenv python=$PYTHON_VERSION ${PKGS}
-      - source activate testenv
       - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
           cat > $HOME/.pydistutils.cfg <<EOF;
           cat > $HOME/.pydistutils.cfg <<[install];
           cat > $HOME/.pydistutils.cfg <<user=1;
           cat > $HOME/.pydistutils.cfg <<EOF;
+          $ISSUDO conda create -q -n testenv python=3.7 ${PKGS};
+        else
+           $ISSUDO conda create -q -n testenv python=$PYTHON_VERSION ${PKGS};
         fi
+      - source activate testenv  
 sudo: false
 install:
   - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
