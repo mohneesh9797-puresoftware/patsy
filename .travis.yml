@@ -123,10 +123,6 @@ before_install:
            bash archiconda.sh -b -p $HOME/miniconda;
            export PATH="$HOME/miniconda/bin:$PATH";
            $ISSUDO cp -r $HOME/miniconda/bin/* /usr/bin/';
-           cat > $HOME/.pydistutils.cfg <<EOF';
-           cat > $HOME/.pydistutils.cfg <<[install];
-           cat > $HOME/.pydistutils.cfg <<user=1;
-           cat > $HOME/.pydistutils.cfg <<EOF;
         else
            wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
            bash miniconda.sh -b -p $HOME/miniconda;  
@@ -139,7 +135,13 @@ before_install:
       - export PKGS="numpy scipy coverage nose pip"
       - if [ "$PANDAS_VERSION_STR" != "NONE" ]; then export PKGS="${PKGS} pandas${PANDAS_VERSION_STR}"; fi
       - $ISSUDO conda create -q -n testenv python=$PYTHON_VERSION ${PKGS}
-      - source activate testenv  
+      - source activate testenv
+      - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
+          cat > $HOME/.pydistutils.cfg <<EOF;
+          cat > $HOME/.pydistutils.cfg <<[install];
+          cat > $HOME/.pydistutils.cfg <<user=1;
+          cat > $HOME/.pydistutils.cfg <<EOF;
+        fi
 sudo: false
 install:
   - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
