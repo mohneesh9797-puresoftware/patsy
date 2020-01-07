@@ -137,7 +137,7 @@ before_install:
       - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
           $ISSUDO conda create -q -n testenv python=3.7 ${PKGS};
         else
-           $ISSUDO conda create -q -n testenv python=$PYTHON_VERSION ${PKGS};
+          $ISSUDO conda create -q -n testenv python=$PYTHON_VERSION ${PKGS};
         fi
       - source activate testenv  
 sudo: false
