@@ -134,7 +134,10 @@ before_install:
       - $ISSUDO conda info -a
       - export PKGS="numpy scipy coverage nose pip"
       - if [ "$PANDAS_VERSION_STR" != "NONE" ]; then export PKGS="${PKGS} pandas${PANDAS_VERSION_STR}"; fi
-      - $ISSUDO conda create -q -n testenv python=$PYTHON_VERSION ${PKGS};
+      - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
+           $ISSUDO conda create -q -n testenv python=3.7 ${PKGS};
+        else
+            $ISSUDO conda create -q -n testenv python=$Python_Version ${PKGS};
       - source activate testenv  
 sudo: false
 install:
