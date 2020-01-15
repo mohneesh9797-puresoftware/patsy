@@ -66,31 +66,7 @@ matrix:
       dist: bionic
       env:
       - PYTHON_VERSION=3.7
-    
-    - arch: arm64
-      dist: bionic
-      env:
-      - PYTHON_VERSION=3.4
-      - PANDAS_VERSION_STR="=0.14.0 libgfortran=1.0"
-            
-    - arch: arm64
-      dist: bionic
-      env:
-      - PYTHON_VERSION=2.7
-      - PANDAS_VERSION_STR="=0.14.0 libgfortran=1.0"
-     
-    - arch: arm64
-      dist: bionic
-      env:
-      - PYTHON_VERSION=3.4
-      - PANDAS_VERSION_STR="=0.18.0"
-          
-    - arch: arm64
-      dist: bionic
-      env:
-      - PYTHON_VERSION=2.7
-      - PANDAS_VERSION_STR="=0.18.0"
-    
+
     - arch: arm64
       dist: bionic
       env:
